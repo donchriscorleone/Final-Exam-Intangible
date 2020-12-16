@@ -11,19 +11,8 @@ function submit() {
     }
     var startResult = document.getElementById('startResult').innerHTML
     var resultDiv = document.getElementById('resultDiv')
-
-    // for(number in person){
-    //    if (person[number].value === '' || person[number].value === null){
-    //        alert(`${person[number].name} cannot be empty`)
-    //    }
-    //    else if(person[number].value.length < 5){
-    //         alert(`${person[number].name} should be atleast 5 characters`)
-    //    }
-    //    else{
-    //        console.log("You're Good to Go!")
-    //    }
-    // }
-
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+   
     if(person.firstName.value === null || person.middleName.value === null || person.lastName.value === null || person.contactNumber.value === null || person.emailAddress.value === null || person.userName.value=== null || person.password1.value=== null || person.password2.value === null){
         alert('You have a null input')
     }
@@ -52,9 +41,9 @@ function submit() {
     else if(isNaN(person.contactNumber.value) || person.contactNumber.value == ''){
             alert('Contact Number is not a number')
             }
-    // else if (person.contactNumber.innerText.length < 11){
-    //     alert('Please Enter 11 digits for your contact number')
-    //     }
+    else if(!person.emailAddress.value.match(pattern))
+            alert('Email Not Valid')
+
     else {
         resultDiv.style.visibility = 'visible'
         document.getElementById("submitBtn").innerHTML = 'Reset';
