@@ -1,0 +1,214 @@
+/* HTML CODE*/
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="CSS/index.css">
+    <script src="JS/index.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Quattrocento" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3534/3534139.svg">
+    <title>Registration Form</title>
+  </head>
+
+  <body>
+    <div id="startResult">
+        <h1>REGISTRATION</h1>
+            <ul>
+                <li><label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your First Name" minlength="5" required></li>
+                    
+                <li> <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="middleName" placeholder="Enter your Middle Name" minlength="5" required></li>
+                
+                <li><label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your Last Name" minlength="5" required></li>
+                
+                
+                <li><label for="contactNumber">Contact Number</label>
+                <input type="tel" id='contactNumber' name="contactNumber" placeholder="Enter your Contact Number" pattern="[0-9]" minlenght="11" maxlength="11" required></li>
+                
+                <li><label for="emailAddress">Email Address</label>
+                    <input type="email" id='emailAddress' name="emailAddress" placeholder="example@domain.com" minlength="5" required></li>
+
+                <li><label for="userName">User Name</label>
+                <input type="text" id="userName" name="userName" placeholder="Enter your User Name" minlength="5" required></li>
+                
+                
+                <li><label for="password1">Password</label>
+                <input type="password" id="password1" name="password1" placeholder="Enter your Password" minlength="5" required></li>
+                
+                
+                <li><label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" minlength="5" required></li>        
+            </ul>
+
+            <button type="submit" id="submitBtn" onclick="submit()">Register</button>  
+    </div>
+
+    <div id="resultDiv" style="visibility: hidden;">
+        <h1>Sucessfully Registered</h1>
+    </div>
+
+  </body>
+</html>
+
+
+
+/* CSS CODE*/
+/* font-family: "Oswald", Sans-Serif;
+
+
+font-family: "Quattrocento", Serif; */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #dae2f8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d6a4a4,
+    #dae2f8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d6a4a4,
+    #dae2f8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+div {
+  background: #757f9a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d7dde8,
+    #757f9a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d7dde8,
+    #757f9a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 0;
+  margin: auto;
+  max-width: 100%;
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+div h1 {
+  padding: 0.2rem;
+  font-family: "Oswald", Sans-Serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li {
+  padding: 10px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  font-family: "Quattrocento", Serif;
+}
+ul li input:hover {
+  cursor: pointer;
+}
+
+button {
+  background-color: #ffbb91;
+  font-size: 1.5rem;
+  display: block;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 2rem;
+  width: 100%;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #ffcc91;
+}
+
+input {
+  width: 230px;
+}
+label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+}
+
+/* JS CODE*/
+function submit() {
+    const person = {
+        firstName : document.getElementById('firstName'),
+        middleName : document.getElementById('middleName'),
+        lastName : document.getElementById('lastName'),
+        contactNumber : document.getElementById('contactNumber'),
+        emailAddress: document.getElementById('emailAddress'),
+        userName : document.getElementById('userName'),
+        password1 : document.getElementById('password1'),
+        password2: document.getElementById('password2')
+    }
+    var startResult = document.getElementById('startResult').innerHTML
+    var resultDiv = document.getElementById('resultDiv')
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+   
+    if(person.firstName.value === null || person.middleName.value === null || person.lastName.value === null || person.contactNumber.value === null || person.emailAddress.value === null || person.userName.value=== null || person.password1.value=== null || person.password2.value === null){
+        alert('You have a null input')
+    }
+    else if(person.password1.value != person.password2.value){
+        alert('Your password is not matched')
+        }
+    else if(person.firstName.value.length < 5){
+        alert('First Name should have atleast 5 characters')
+    }
+    else if(person.middleName.value.length< 5){
+        alert('Middle Name should have atleast 5 characters')
+    }
+    else if(person.lastName.value.length < 5){
+        alert('Last Name should have atleast 5 characters')
+    }
+    else if(person.emailAddress.value.length < 5){
+        alert('Email Address should have atleast 5 characters')
+    }
+    else if(person.userName.value.length < 5){
+        alert('Username should have atleast 5 characters')
+    }
+    else if(person.password1.value.length < 5){
+        alert('Password should have atleast 5 characters')
+    }
+
+    else if(isNaN(person.contactNumber.value) || person.contactNumber.value == ''){
+            alert('Contact Number is not a number')
+            }
+    else if(!person.emailAddress.value.match(pattern))
+            alert('Email Not Valid')
+
+    else {
+        resultDiv.style.visibility = 'visible'
+        document.getElementById("submitBtn").innerHTML = 'Reset';
+         document.getElementById('submitBtn').onclick = function(){  // reset button
+            document.getElementById('startResult').innerHTML = startResult;
+             resultDiv.style.visibility = 'hidden'
+         }
+        }
+        console.log(person.firstName.value)
+    }
+
+    
+   
